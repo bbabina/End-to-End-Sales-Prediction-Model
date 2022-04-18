@@ -7,6 +7,8 @@ import seaborn as sns
 import io
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import matplotlib.pyplot as plt
+import math
+
 
 fig,ax = plt.subplots(figsize=(6,6))
 ax=sns.set_style(style="darkgrid")
@@ -32,8 +34,9 @@ def predict():
     day_of_year=float(request.form['day_of_year'])
     
     
+    
     X= np.array([[ store, item, year, month, day_of_year ]])
-
+    
     model_path=r'C:\Users\Epoch\OneDrive\Desktop\minorrrrrrr\models\cat_model.sav'
 
     model= joblib.load(model_path)
@@ -41,7 +44,7 @@ def predict():
     Y_pred=model.predict(X)
     
 
-    return render_template("predict.html", my_prediction = Y_pred)
+    return render_template("predict.html", my_prediction = math.floor(Y_pred))
 
 
 @app.route('/visualize',methods=['POST','GET'])
