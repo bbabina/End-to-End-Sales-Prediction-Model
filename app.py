@@ -37,7 +37,7 @@ def predict():
     
     X= np.array([[ store, item, year, month, day_of_year ]])
     
-    model_path=r'C:\Users\Epoch\OneDrive\Desktop\minorrrrrrr\models\cat_model.sav'
+    model_path=r'C:\Users\Samsung\Desktop\Sales-Prediction-Flask-Deployement\models\cat_model.sav'
 
     model= joblib.load(model_path)
 
@@ -53,7 +53,7 @@ def visualize():
     store=1
     item=2
 
-    forecastCAT=pd.read_csv(r'C:\Users\Epoch\OneDrive\Desktop\minorrrrrrr\datasets\file.csv')
+    forecastCAT=pd.read_csv(r'C:\Users\Samsung\Desktop\Sales-Prediction-Flask-Deployement\datasets\file.csv')
 
     plot1=[[(forecastCAT.store==int(store)) & (forecastCAT.item==int(item))]]['sales']
     plot1.plot(color = "orange", figsize = (25,10),legend=True,label="Store "+str(store)+" item "+str(item)+" forecast")
@@ -68,10 +68,3 @@ def visualize():
 if __name__ == "__main__":
     app.run(debug=True)
 
-# sns.lineplot(x,y)
-    # canvas=FigureCanvas(fig)
-    # img=io.BytesIO()
-    # fig.savefig(img)
-    # img.seek(0)
-    # return send_file(img,mimetype='img/png')
-    # return render_template("predict.html", visualize = send_file(img,mimetype='img/png')
